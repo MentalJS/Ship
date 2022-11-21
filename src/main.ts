@@ -1,35 +1,25 @@
 interface chocolateDenoLoction {
     DenoLoction():any
 }
-enum chocolateLoggerTypes {
-    log = "log",
-    error = "error",
-    warn = "warn",
-    dir = "dir",
+interface chocolateType{
+    Denoloction():void
+    logString(data:string):void
+    logNum(data:number):void
 }
 
-class chocolate {
+enum LogLevel {
+    ERROR,
+    WARN,
+    INFO,
+    DEBUG,
+}
+class chocolate implements chocolateType {
     public DenoLoction():chocolateDenoLoction{
             return Deno.execPath()
     } 
-    public logger(e :chocolateLoggerTypes,data){    
-        switch(e){
-            case "log":
-                console.log(data)
-                break
-            case "error":
-                console.error(data)
-                break
-            case "warn":
-                console.warn(data)
-                break
-            default:
-                if (e == undefined){
-                    throw 'No log type:Try use log'
-                }   
-        }
-    }
+    public logString(data:string),loglevel{    
+        console.log(data)
+    }    
 }
-let Chocolate = new chocolate()
-Chocolate.logger(LoggerTypes.log,"FUCK YOU")
-Chocolate.logger(chocolateLoggerTypes)
+const Chocolate = new chocolate()
+Chocolate.logNum()
