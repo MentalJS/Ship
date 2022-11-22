@@ -1,25 +1,38 @@
-interface chocolateDenoLoction {
-    DenoLoction():any
-}
-interface chocolateType{
-    Denoloction():void
-    logString(data:string):void
-    logNum(data:number):void
-}
+import {chocolateType} from './types.ts'
 
-enum LogLevel {
-    ERROR,
-    WARN,
-    INFO,
-    DEBUG,
-}
-class chocolate implements chocolateType {
-    public DenoLoction():chocolateDenoLoction{
-            return Deno.execPath()
+// deno-lint-ignore prefer-const
+let LogLevel = [
+    "[ERROR]",
+    "[WARN]",
+    "[INFO]",
+    "[DEBUG]",
+]
+
+class chocolate implements chocolateType  {
+    public exit(){
+        Deno.exit(1)
+    }
+    public pid(){
+        return Deno.pid
+    }
+    public ppid(){
+        return Deno.ppid
+    }
+    public kill(inp:number){
+        Deno.kill(inp)
+    }
+    // deno-lint-ignore no-explicit-any
+    public log(data:any,level:number){    
+        console.log(`${LogLevel[level]} ${data}`)
     } 
-    public logString(data:string),loglevel{    
-        console.log(data)
-    }    
 }
+await Deno.permissions.request({ name:"run" })
 const Chocolate = new chocolate()
-Chocolate.logNum()
+Chocolate.log("data",0)
+Chocolate.log("data", 1)
+Chocolate.log("data", 2)
+Chocolate.log("data", 3)
+Chocolate.log(Chocolate.pid(),3)
+Deno.run({
+    cmd: ["curl", "https://example.com"],
+});
