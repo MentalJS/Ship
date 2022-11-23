@@ -1,0 +1,26 @@
+export class logger {
+    log(data:any){
+        console.log(data)
+    }
+    error(data:any){
+        console.error(data)
+    }
+    warn(data:any){
+        console.warn(data)
+    }
+    table(data:any){
+        console.table(data)
+    }
+    clear(){
+        console.clear()
+    }
+    dir(data:any){
+        console.dir(data)
+    }
+    dirxml(data:any){
+        console.dirxml(data)
+    }   
+    info(data:any){
+        console.info(data)
+    }
+}
