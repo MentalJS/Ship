@@ -1,26 +1,19 @@
-export class logger {
-    log(data:any){
-        console.log(data)
+import { log_c_type } from "./type.ts"
+
+export class log_c implements log_c_type{
+    public info(data:any){
+        console.log("[INFO]: "+data)
     }
-    error(data:any){
-        console.error(data)
+    public debug(data:any){
+        console.log("[DEBUG]:"+data)
     }
-    warn(data:any){
-        console.warn(data)
+    public error(data:any){
+        console.log("[error]: "+data)
     }
-    table(data:any){
-        console.table(data)
+    public warning(data:any){
+        console.log("[warning]: "+ data)
     }
-    clear(){
-        console.clear()
-    }
-    dir(data:any){
-        console.dir(data)
-    }
-    dirxml(data:any){
-        console.dirxml(data)
-    }   
-    info(data:any){
-        console.info(data)
+    public critical(data:any){
+        console.log("[critical]: "+data)
     }
 }
